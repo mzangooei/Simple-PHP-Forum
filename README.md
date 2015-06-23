@@ -4,6 +4,7 @@ a very simple PHP forum for PHP beginners to start learning database and PHP Con
 in order to create the Database for the Project, create a Database in MYSQL server and use the following SQL commands in the Database to create the required Tables and Foreign Keys.
 
 //Users Table
+
 CREATE TABLE users (
 user_id     INT(8) NOT NULL AUTO_INCREMENT,
 user_name   VARCHAR(30) NOT NULL,
@@ -17,6 +18,7 @@ PRIMARY KEY (user_id)
 
 
 //Categories Table
+
 CREATE TABLE categories (
 cat_id          INT(8) NOT NULL AUTO_INCREMENT,
 cat_name        VARCHAR(255) NOT NULL,
@@ -28,6 +30,7 @@ PRIMARY KEY (cat_id)
 
 
 //Topics Table
+
 CREATE TABLE topics (
 topic_id        INT(8) NOT NULL AUTO_INCREMENT,
 topic_subject       VARCHAR(255) NOT NULL,
@@ -39,6 +42,7 @@ PRIMARY KEY (topic_id)
 
 
 //Posts Table
+
 CREATE TABLE posts (
 post_id         INT(8) NOT NULL AUTO_INCREMENT,
 post_content        TEXT NOT NULL,
@@ -50,13 +54,18 @@ PRIMARY KEY (post_id)
 
 
 //Foreign Keys
+
 ALTER TABLE topics ADD FOREIGN KEY(topic_cat) REFERENCES categories(cat_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
 
 ALTER TABLE topics ADD FOREIGN KEY(topic_by) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
 
+
 ALTER TABLE posts ADD FOREIGN KEY(post_topic) REFERENCES topics(topic_id) ON DELETE CASCADE ON UPDATE CASCADE;
 
+
 ALTER TABLE posts ADD FOREIGN KEY(post_by) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE;
+
 
 
 
